@@ -1,0 +1,1009 @@
+####################################################################################################
+# Map1
+# first prototype mapping of tables to a web representation
+# Basic directory structure
+# Note:
+# Collections need to be defined with the entity they contains (other collections or codes),
+# not with details of these contained entities! (defined in the relative configuration file)
+####################################################################################################
+@prefix metaMap: 	<http://reference.metoffice.gov.uk/data/wmo/meta/mapping#> .
+@prefix metModel:	<http://reference.metoffice.gov.uk/data/wmo/meta/model#> .
+@prefix metExtra:	<http://reference.metoffice.gov.uk/data/wmo/def/met#> .
+@prefix iso19135: 	<http://reference.metoffice.gov.uk/data/wmo/def/iso19135#> .
+@prefix wmo: 		<http://reference.metoffice.gov.uk/data/wmo/def/wmo#> .
+@prefix map: 		<http://reference.metoffice.gov.uk/data/wmo/mappings/baseDirMap#> .	# this mapping
+@prefix :<http://reference.metoffice.gov.uk/data/wmo/tdcf/> .																							#This is the default!
+
+@prefix rdf:    	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    	<http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: 		<http://www.w3.org/2004/02/skos/core#> .
+
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+
+
+#####################################################################################################
+# UPPER PARTITIONS
+#
+# There are five top collections: "BUFR" , "CREX" , "BUFRCREX", "Common" and "GRIB"
+# These correspond to standards (or standard independent) table collections, and are not versioned
+# Note: these specifications could as well be made directly in RDF and passed as input to the model
+#       constructor.
+#
+#####################################################################################################
+
+##########################################
+# BUFR collection
+# Contains all tables relative to BUFR
+# This is an un-versioned terminology set
+##########################################											
+map:bufrBaseCollection a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr";
+	d2rq:class metaMap:TerminologySet;					
+	.
+map:bufrBaseCollectionLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrBaseCollection;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "BUFR code tables"@en;
+	.	
+map:bufrBaseCollectionCommentEn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of tables relative to the BUFR standards."@en;
+	.
+map:bufrBaseCollectionCommentIt a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Una collezione di tablelle relative allo standard BUFR."@it;
+	.	
+map:bufrBaseCollectionNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrBaseCollection;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "bufr";
+	.	
+##########################################
+# CREX collection
+# Contains all tables relative to CREX
+# This is an un-versioned terminology set
+##########################################	
+map:crexBaseCollection a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:crexBaseCollectionLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexBaseCollection;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "CREX code tables"@en;
+	.
+map:crexBaseCollectionCommentEN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of tables relative to the CREX standards."@en;
+	.	
+map:crexBaseCollectionCommentIT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Una collezione di tablelle relative allo standard CREX."@it;
+	.		
+map:crexBaseCollectionNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexBaseCollection;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "crex";
+	.		
+
+##########################################
+# Common collection
+# Contains all common tables: 
+# This includes C1-C13
+# Plus the extra tables defined as X-
+# This is an un-versioned terminology set
+##########################################
+map:commonBaseCollection a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:commonBaseCollectionLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonBaseCollection;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Common code tables"@en;
+	.
+map:commonBaseCollectionCommentEN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of tables common to the BUFR, CREX and GRIB standards"@en;
+	.	
+map:commonBaseCollectionCommentIT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Una collezione di tabelle relatie agli standards BUFR, CREX e GRIB"@it;
+	.	
+map:commonBaseCollectionNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonBaseCollection;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "common";
+	.
+
+
+##########################################
+# BUFR/CREX collection
+# Collection containing tables common only
+# to BUFR and CREX
+# (Basically the Code and Flags table)
+# Un-versioned
+##########################################
+map:bufrCrexBaseCollection a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufrcrex";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:bufrCrexBaseCollectionLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCrexBaseCollection;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "BUFR and CREX tables"@en;
+	.
+map:bufrCrexBaseCollectionComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCrexBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of tables common to the BUFR and CREX standards"@en;
+	.	
+map:bufrCrexBaseCollectionNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCrexBaseCollection;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "bufrcrex";
+	.
+	
+##########################################
+# GRIB collection
+# Collection containing GRIB tables
+# Un-versioned
+##########################################
+map:gribBaseCollection a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:gribBaseCollectionLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:gribBaseCollection;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "GRIB tables"@en;
+	.
+map:gribBaseCollectionCommentEN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:gribBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of tables relative to the GRIB standard"@en;
+	.
+map:gribBaseCollectionCommentIT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:gribBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Una collezione di tabelle relative allo standard GRIB"@it;
+	.		
+map:gribBaseCollectionNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:gribBaseCollection;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "grib";
+	.	
+	
+
+##########################################
+# Schemes collection
+# (as far as we go in ontologies)
+# Only a few are are going to be defined.
+# Un-versioned
+##########################################
+map:schemesBaseCollection a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:schemesBaseCollectionLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:schemesBaseCollection;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Schemes"@en;
+	.
+map:schemesBaseCollectionCommentEN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:schemesBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of standard independent schemes built on wmo codes"@en;
+	.	
+map:schemesBaseCollectionCommentIT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:schemesBaseCollection;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Una collezioni di schemi indipendenti da standards e derivati da codici wmo"@en;
+	.	
+map:schemesBaseCollectionNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:schemesBaseCollection;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "schemes";
+	.
+
+#####################################################################################################
+# Filling schemes
+# we only need to "register" schemes here. We provide minimial information (label).
+# Schemes themselves are described in other mappings.
+#####################################################################################################
+
+
+##########################################
+# Schema: unit of measure
+# Unversioned
+##########################################	
+
+map:dataUnitScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/dataUnits";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:dataUnitSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "dataUnits";
+	.		
+map:dataUnitSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:schemesBaseCollection;
+	.	
+
+map:dataUnitSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data units"@en;
+	.	
+
+map:dataUnitSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.
+
+##########################################
+# Schema: temperature
+##########################################	
+
+map:temperaturesScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/temperatures";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:temperaturesSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "temperatures";
+	.		
+map:temperaturesSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:schemesBaseCollection;
+	.	
+map:temperaturesSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Temperatures"@en;
+	.	
+
+map:temperaturesSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# Schema: dataType
+##########################################
+
+map:dataTypeScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/dataTypes";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:dataTypeSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "dataTypes";
+	.		
+map:dataTypeSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:schemesBaseCollection;
+	.	
+
+map:dataTypeSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data types"@en;
+	.	
+	
+map:dataTypeSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+	
+##########################################
+# Schema: Code 020003  
+##########################################	
+map:presentWeatherScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/weather";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:presentWeatherSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "weather";
+	.		
+map:presentWeatherSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:schemesBaseCollection;
+	.	
+map:presentWeatherSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Present) Weather"@en;
+	.	
+map:presentWeatherSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+##########################################
+# Code 0200136  scheme
+##########################################	
+map:subCloudTypeScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/clouds";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:subCloudTypeSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "clouds";
+	.		
+map:subCloudTypeSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:schemesBaseCollection;
+	.	
+map:subCloudTypeSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Sub) cloud types"@en;
+	.	
+map:subCloudTypeSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+	
+	
+
+#####################################################################################################
+# Mapping Table A(bufr),B(bufr+crex),Code and Flags, C-1,C-11,C-6,C-12,C-13
+#
+#####################################################################################################
+
+
+##########################################
+# TableA BUFR
+##########################################	
+map:tableAbufr a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/a";								# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableAbufrLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table A"@en;
+	.
+map:tableAbufrComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "data categories"@en;				# TODO to check
+	.	
+map:tableAbufrNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "a";
+	.	
+map:tableAbufrBIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:bufrBaseCollection;
+	.
+map:tableAbufrVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableAbufrType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableAbufr;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:tableAPragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property	metaMap:pragma;
+	d2rq:constantValue metaMap:canonicalExpandDashSuppress;
+	.
+
+
+##########################################
+# TableA CREX
+##########################################	
+map:tableAcrex a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/a";								# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableAcrexLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table A"@en;
+	.	
+map:tableAcrexNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "a";
+	.	
+map:tableAcrexBIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:crexBaseCollection;
+	.
+map:tableAcrexVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+
+
+##########################################
+# TableB BUFR
+##########################################		
+map:tableBbufr a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/b";								# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableBbufrLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table B"@en;
+	.
+map:tableBbufrNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "b";
+	.	
+map:tableBbufrBIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:bufrBaseCollection;
+	.
+map:tableBbufrVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableBbufrType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBbufr;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+																# TODO perhaps we want to declare an owner here ?
+
+##########################################
+# TableB CREX
+##########################################	
+map:tableCrex a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/b";									# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableCrexLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table B"@en;
+	.
+map:tableCrexNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "b";
+	.	
+map:tableCrexIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:crexBaseCollection;
+	.
+map:tableCrexVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableCrexType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableCrex;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+	
+		
+##########################################
+# BUFR/CREX codes and flags table
+##########################################		
+map:tableCodeFlags a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufrcrex/codes+flags";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:tableCodeFlagsNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "codes+flags";
+	.
+map:tableCodeFlagsLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "BUFR and CREX Codes and Flags Table"@en;
+	.
+map:tableCodeFlagsComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Codes used in combination with BUFR or CREX table B to identify object of properties. Flags are compressed sets of statements."@en;
+	.		
+map:tableCodeFlagsIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:bufrCrexBaseCollection;
+	.		
+map:tableCodeFlagsVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableCodeFlagsType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableCodeFlags;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+
+##########################################
+# TableC-1 
+##########################################	
+map:tableC1 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-1";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC1Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-1"@en;
+	.
+map:tableC1Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Originating center"@en;				# TODO to verify
+	.	
+map:tableC1NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-1";
+	.	
+map:tableC1In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.
+map:tableC1Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC1Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC1;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+
+##########################################
+# TableC-6
+##########################################	
+map:tableC6 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-6";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC6Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-6"@en;
+	.
+map:tableC6Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Chemical elements"@en;				# TODO to verify
+	.	
+map:tableC6NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-6";
+	.	
+map:tableC6In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.
+map:tableC6Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC6Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC6;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+
+##########################################
+# TableC-11
+##########################################	
+map:tableC11 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-11";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC11Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-11"@en;
+	.
+map:tableC11Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Originating centers"@en;				# TODO to verify
+	.	
+map:tableC11NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-11";
+	.	
+map:tableC11In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.
+map:tableC11Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC11Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC11;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+
+
+
+##########################################
+# TableC-12
+##########################################	
+map:tableC12 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-12";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC12Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-12"@en;
+	.
+map:tableC12Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Originating sub-centers"@en;				# TODO to verify
+	.	
+map:tableC12NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-12";
+	.	
+map:tableC12In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.
+map:tableC12Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC12Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC12;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+
+##########################################
+# TableC-13
+##########################################	
+map:tableC13 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-13";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC13Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-13";
+	.
+map:tableC13Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Data sub-categories"@en;				# TODO to verify
+	.	
+map:tableC13NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-13";
+	.	
+map:tableC13In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.
+map:tableC13Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC13Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC13;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+##########################################
+# GRIB Code and Flags Table
+##########################################	
+map:tableGRIBCF a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableGRIBCFLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Code and Flags";
+	.
+map:tableGRIBCFComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "GRIB Code and Flags table"@en;				# TODO to verify
+	.	
+map:tableGRIBCFNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "codes+flags";
+	.	
+map:tableGRIBCFIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:gribBaseCollection;
+	.
+map:tableGRIBCFVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableGRIBCFType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableGRIBCF;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+
+#####################################################################################################
+# Filling common x-register (see note for filling schemes block)
+#
+#####################################################################################################
+
+##########################################
+# x-register: temperatures
+##########################################
+
+map:temperaturesXRegistry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-temperatures";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:temperaturesXRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-temperatures";
+	.		
+map:temperaturesXRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.	
+
+map:temperaturesXRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Temperatures"@en;
+	.	
+
+map:temperaturesXRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# x-register: data types
+##########################################
+map:x-dataTypes a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataTypes";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:x-dataTypesRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-dataTypes";
+	.		
+map:x-dataTypesRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.	
+
+map:x-dataTypesRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data types"@en;
+	.	
+
+
+map:x-dataTypesRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+
+##########################################
+# x-register: data units
+##########################################
+map:x-dataUnits a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataUnits";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:x-dataUnitsRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-dataUnits";
+	.		
+map:x-dataUnitsRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.	
+
+map:x-dataUnitsRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data units"@en;
+	.		
+
+map:x-dataUnitsRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+	
+##########################################
+# Code 020003  x-registry
+##########################################	
+map:presentWeatherXRegistry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-weather";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:presentWeatherXRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-weather";
+	.		
+map:presentWeatherXRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.	
+map:presentWeatherXRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Present) Weather"@en;
+	.		
+map:presentWeatherXRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.		
+	
+##########################################
+# Code 020136  x-registry
+##########################################	
+map:subCloudTypeXRegistry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-clouds";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:subCloudTypeXRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-clouds";
+	.		
+map:subCloudTypeXRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.	
+map:subCloudTypeXRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Sub) Cloud type"@en;
+	.	
+map:subCloudTypeXRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+	
+##########################################
+# We need an extra code table for regions
+##########################################	
+map:tableX-regions a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-regions";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableX-regionsNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-regions";
+	.	
+map:tableX-regionsLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Regions"@en;
+	.	
+map:tableX-regionsIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:commonBaseCollection;
+	.
+map:tableX-regionsVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+	

@@ -1,0 +1,1129 @@
+####################################################################################################
+# Data categories include table:
+# A (only bufr considered_
+# C-13
+# GRIB (0.0, 4.1, 4.2 considered)
+####################################################################################################
+@prefix metaMap: 	<http://reference.metoffice.gov.uk/data/wmo/meta/mapping#> .
+@prefix metModel:	<http://reference.metoffice.gov.uk/data/wmo/meta/model#> .
+@prefix metExtra:	<http://reference.metoffice.gov.uk/data/wmo/def/met#> .
+@prefix iso19135: 	<http://reference.metoffice.gov.uk/data/wmo/def/iso19135#> .
+@prefix wmo: 		<http://reference.metoffice.gov.uk/data/wmo/def/wmo#> .
+@prefix map: 		<http://reference.metoffice.gov.uk/data/wmo/mappings/TablesA-C13-GRIB#> .	# this mapping
+@prefix generic:	<http://reference.metoffice.gov.uk/data/wmo/mapping/generic1#> .
+@prefix :<http://reference.metoffice.gov.uk/data/wmo/tdcf/> .																							#This is the default!
+
+@prefix rdf:    	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    	<http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: 		<http://www.w3.org/2004/02/skos/core#> .
+
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+
+
+#####################################################################################################
+# Tables
+# The Mapping of Tables A, C-13, GRIB code and flags is repeated from the basedir configuration file
+# Note: mapping base files should preceed this mapping (e.g.: this information "overwrites" previous
+# mappings
+#####################################################################################################
+
+
+##########################################
+# TableA BUFR
+##########################################	
+map:tableAbufr a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/a";								# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableAbufrLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table A"@en;
+	.
+map:tableAbufrComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "data categories"@en;				# TODO to check
+	.	
+map:tableAbufrNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "a";
+	.	
+map:tableAbufrBIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://127.0.0.1:8888/MetOffice2/global/bufr>;
+	.
+map:tableAbufrVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableAbufrType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableAbufr;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:tableAPragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAbufr;
+	d2rq:property	metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppress;
+	.
+	
+
+
+##########################################
+# TableA CREX
+##########################################	
+map:tableAcrex a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/a";								# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableAcrexLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table A"@en;
+	.
+map:tableAcrexComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "data categories"@en;				# TODO to check
+	.	
+map:tableAcrexNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "a";
+	.	
+map:tableAcrexBIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/crex>;
+	.
+map:tableAcrexVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableAcrexType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableAcrex;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:tableAcrexPragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableAcrex;
+	d2rq:property	metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppress;
+	.
+	
+
+
+
+
+
+##########################################
+# TableC-13
+##########################################	
+map:tableC13 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-13";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC13Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-13";
+	.
+map:tableC13Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Data sub-categories"@en;				# TODO to verify
+	.	
+map:tableC13NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-13";
+	.	
+map:tableC13In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <ttp://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.
+map:tableC13Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC13;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC13Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC13;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+##########################################
+# GRIB Code and Flags Table
+##########################################	
+map:tableGRIBCF a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableGRIBCFLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Code and Flags";
+	.
+map:tableGRIBCFComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "GRIB Code and Flags table"@en;				# TODO to verify
+	.	
+map:tableGRIBCFNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "codes+flags";
+	.	
+map:tableGRIBCFIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <ttp://reference.metoffice.gov.uk/data/wmo/tdcf/grib>;
+	.
+map:tableGRIBCFVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableGRIBCF;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableGRIBCFType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableGRIBCF;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+	
+#####################################################################################################
+# Mapping classes
+# (This basically only applies to Table B)
+#
+#####################################################################################################
+
+##########################################
+# Classes for TableB / BUFR
+# Note: additional information not in the
+# cvs file will be inserted via external
+# RDF files.
+##########################################
+
+
+
+
+
+#####################################################################################################
+# Mapping individuals in Tables A and C-13
+# data categories
+#
+#####################################################################################################
+
+
+##########################################
+# Mapping individuals in Tables A 
+# bufr
+##########################################
+
+map:bufrA a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/a/@@BUFR-A.CodeFigure@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:bufrANotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property skos:notation;
+	d2rq:column "BUFR-A.CodeFigure";	
+	.
+#map:bufrALabel a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:bufrA;
+#	d2rq:property rdfs:label;
+#	d2rq:column "BUFR-A.Meaning_en"@en;
+#	.
+map:bufrASkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property skos:prefLabel;
+	d2rq:column "BUFR-A.Meaning_en"@en;
+	d2rq:condition "BUFR-A.Meaning_en!=\"Reserved\"";
+	.
+map:bufrALabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-A.Meaning_en"@en;
+	d2rq:condition "BUFR-A.Meaning_en=\"Reserved\"";
+	.	
+map:bufrASkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:dataTopConcept;
+	d2rq:condition "BUFR-A.Meaning_en!=\"Reserved\"";
+	.		
+map:bufrAReserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "BUFR-A.Meaning_en=\"Reserved\"";
+	.
+#map:bufrATypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:bufrA;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:bufrATypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "BUFR-A.Meaning_en!=\"Reserved\"";
+	.		
+map:bufrATypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataTypeScheme;
+	d2rq:condition "BUFR-A.Meaning_en!=\"Reserved\"";
+	.	
+map:bufrATypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableAbufr;
+	.
+map:bufrATypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "BUFR-A.CodeFigure";
+	.
+map:bufrATypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property wmo:codeFigure;
+	d2rq:column "BUFR-A.CodeFigure";
+	.
+map:bufrATypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrA;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "BUFR-A.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+
+
+##########################################
+# Mapping individuals in Tables A 
+# crex
+##########################################
+
+map:crexA a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/a/@@CREX-A.CodeFigure@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:crexANotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property skos:notation;
+	d2rq:column "CREX-A.CodeFigure";	
+	.	
+#map:crexALabel a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexA;
+#	d2rq:property rdfs:label;
+#	d2rq:column "CREX-A.Meaning_en"@en;
+#	.
+map:crexASkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property skos:prefLabel;
+	d2rq:column "CREX-A.Meaning_en"@en;
+	d2rq:condition "CREX-A.Meaning_en!=\"Reserved\"";
+	.
+map:crexALabel2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property rdfs:label;
+	d2rq:column "CREX-A.Meaning_en"@en;
+	d2rq:condition "CREX-A.Meaning_en=\"Reserved\"";
+	.	
+map:crexASkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:dataTopConcept;
+	d2rq:condition "CREX-A.Meaning_en!=\"Reserved\"";
+	.		
+map:crexAReserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "CREX-A.Meaning_en=\"Reserved\"";
+	.
+#map:crexATypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexA;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:crexATypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "CREX-A.Meaning_en!=\"Reserved\"";
+	.		
+map:crexATypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataTypeScheme;
+	d2rq:condition "CREX-A.Meaning_en!=\"Reserved\"";
+	.	
+map:crexATypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableAcrex;
+	.
+map:crexATypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "CREX-A.CodeFigure";
+	.
+map:crexATypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property wmo:codeFigure;
+	d2rq:column "CREX-A.CodeFigure";
+	.
+map:crexATypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "CREX-A.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:crexATypeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexA;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "CREX-A.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+
+map:crexAexactMatch a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexA;
+	d2rq:property skos:exactMatch;
+	d2rq:condition "CREX-A.CodeFigure = BUFR-A.CodeFigure and CREX-A.CodeFigure not like \"%-%\"";
+	d2rq:refersToClassMap map:bufrA;
+	.
+
+
+
+
+
+##########################################
+# Mapping individuals in Table C-13
+##########################################
+
+map:c13 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-13/@@C-13.CodeFigure_DataCategories@@.@@C-13.CodeFigure_InternationalDataSubcategories@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	d2rq:condition "C-13.CodeFigure_InternationalDataSubcategories!=\"\"";
+	.
+map:c13Notation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property skos:notation;
+	d2rq:pattern "@@C-13.CodeFigure_DataCategories@@.@@C-13.CodeFigure_InternationalDataSubcategories@@";	
+	.	
+	
+#map:c13Label a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:c13;
+#	d2rq:property rdfs:label;
+#	d2rq:column "C-13.Name_InternationalDataSubcategories_en"@en;
+#	.
+map:c13SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property skos:prefLabel;
+	d2rq:column "C-13.Name_InternationalDataSubcategories_en"@en;
+	.
+map:c13SkosBroaderBUFR a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:bufrA;
+	d2rq:join "BUFR-A.PaddedCode=C-13.CodeFigure_DataCategories";
+	.		
+map:c13SkosBroaderCREX a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:crexA;
+	d2rq:join "CREX-A.PaddedCode=C-13.CodeFigure_DataCategories";
+	.		
+
+#map:c13TypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:c13;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+
+map:c13TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.		
+map:c13TypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataTypeScheme;
+	.	
+map:c13TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableC13;
+	.
+map:c13TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property metaMap:nameSpace;
+	d2rq:pattern "@@C-13.CodeFigure_DataCategories@@.@@C-13.CodeFigure_InternationalDataSubcategories@@";
+	.
+map:c13TypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property wmo:codeFigure;
+	d2rq:column "C-13.CodeFigure_InternationalDataSubcategories";
+	.
+map:c13TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "C-13.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+map:c13TypeStatus2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:c13;
+	d2rq:property iso19135:status;
+	d2rq:uriColumn "C-13.Status";
+	d2rq:translateWith map:StatusTableISO;
+	.
+
+
+
+
+##########################################
+# Mapping scheme for TableA/C13
+##########################################
+
+map:dataTypeScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/dataTypes";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:dataTypeSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "dataTypes";
+	.		
+map:dataTypeSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/schemes>;
+	.	
+map:dataTypeSchemeDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Types of data for a BUFR/CREX message"@en;
+	.
+map:dataTypeSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data types"@en;
+	.	
+map:dataTypeSchemeSKOSType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:ConceptScheme;
+	.	
+map:dataTypeSchemeTop a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property skos:hasTopConcept;
+	d2rq:refersToClassMap map:dataTopConcept;
+	.
+map:dataTypeSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTypeScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# Mapping top concept for TableA/C13
+##########################################
+#We define a top element for data types.
+map:dataTopConcept a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataTypes/genericData" ;
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:dataTopConceptNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTopConcept;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "genericData"@en;
+	.	
+map:dataTopConceptType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTopConcept;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.	
+map:dataTopConceptLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "data"@en;
+	.	
+map:dataTopConceptComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTopConcept;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Any type of data"@en;
+	.	
+map:dataTopConceptInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTopConcept;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap	map:x-dataTypes;
+	.
+map:dataTopConceptInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataTopConcept;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap	map:dataTypeScheme;
+	.	
+	
+##########################################
+# Mapping collection for extra codes
+# from TableA/C13
+##########################################	
+map:x-dataTypes a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataTypes";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:x-dataTypesRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-dataTypes";
+	.		
+map:x-dataTypesRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.	
+map:x-dataTypesRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of data types codes derived, but not defined, in tables"@en;
+	.
+map:x-dataTypesRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data types"@en;
+	.	
+map:x-dataTypesRegistryType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	.	
+
+map:x-dataTypesRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataTypes;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+##########################################
+# Mapping Table GRIB Code and Flags 0.0
+##########################################	
+map:grib00Table a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags/0.0";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:grib00TableRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00Table;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "0.0";
+	.		
+map:grib00TableRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00Table;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableGRIBCF;
+	.	
+map:grib00TableRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00Table;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Discipline of processed data in the GRIB message, number of GRIB Master table"@en;
+	.
+map:grib00TableRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00Table;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Disciplines of processed data"@en;
+	.	
+#map:grib00TableRegistryType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib00Table;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:grib00TableTypesRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00Table;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+map:grib00TablePragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00Table;
+	d2rq:property	metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppressFlags;
+	.	
+	
+	
+##########################################
+# Mapping Table GRIB Code and Flags 4.1
+##########################################	
+map:grib41Table a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags/4.1";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:grib41TableRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41Table;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "4.1";
+	.		
+map:grib41TableRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41Table;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableGRIBCF;
+	.	
+map:grib41TableRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41Table;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Parameter category by product discipline"@en;
+	.
+map:grib41TableRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41Table;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Parameter category"@en;
+	.	
+#map:grib41TableRegistryType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib41Table;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:grib41TableTypesRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41Table;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+map:grib41TablePragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41Table;
+	d2rq:property	metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppressFlags;
+	.	
+	
+##########################################
+# Mapping Table GRIB Code and Flags 4.2
+##########################################	
+map:grib42Table a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags/4.2";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:grib42TableRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42Table;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "4.2";
+	.		
+map:grib42TableRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42Table;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableGRIBCF;
+	.	
+map:grib42TableRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42Table;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Parameter number by product discipline and parameter category"@en;
+	.
+map:grib42TableRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42Table;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Parameter"@en;
+	.	
+#map:grib42TableRegistryType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib42Table;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:grib42TableTypesRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42Table;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.			
+map:grib42TablePragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42Table;
+	d2rq:property	metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppressFlags;
+	.	
+	
+	
+
+
+	
+	
+
+##########################################
+# Mapping individuals in GRIB 0.0 
+##########################################
+
+map:grib00 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags/0.0/@@GRIB-B-0-0.CodeFlag@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:grib00Notation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property skos:notation;
+	d2rq:column "GRIB-B-0-0.CodeFlag";	
+	.		
+map:grib00SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property skos:prefLabel;
+	d2rq:column "GRIB-B-0-0.MeaningParameterDescription_en"@en;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-0-0.MeaningParameterDescription_en!=\"Missing\"";
+	.
+map:grib00Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property rdfs:comment;
+	d2rq:column "GRIB-B-0-0.Title_en"@en;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-0-0.MeaningParameterDescription_en!=\"Missing\"";
+	.	
+map:grib00Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property rdfs:label;
+	d2rq:column "GRIB-B-0-0.MeaningParameterDescription_en"@en;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en like \"Reserved%\" or GRIB-B-0-0.MeaningParameterDescription_en=\"Missing\"";
+	.	
+map:grib00SkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:dataTopConcept;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-0-0.MeaningParameterDescription_en!=\"Missing\"";
+	.		
+map:grib00Reserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en like \"Reserved%\"";
+	.
+#map:grib00TypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib00;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:grib00TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-0-0.MeaningParameterDescription_en!=\"Missing\"";
+	.		
+map:grib00TypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataTypeScheme;
+	d2rq:condition "GRIB-B-0-0.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-0-0.MeaningParameterDescription_en!=\"Missing\"";
+	.	
+map:grib00TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:grib00Table;
+	.
+map:grib00TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "GRIB-B-0-0.CodeFlag";
+	.
+map:grib00TypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property wmo:codeFlag;
+	d2rq:column "GRIB-B-0-0.CodeFlag";
+	.
+map:grib00TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "GRIB-B-0-0.CodeFlag";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+map:grib00TypeStatus2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property iso19135:status;
+	d2rq:uriColumn "GRIB-B-0-0.CodeFlag";
+	d2rq:translateWith map:StatusTableISO;
+	.
+map:grib00wmoTitle a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib00;
+	d2rq:property wmo:Title_en;
+	d2rq:column "GRIB-B-0-0.Title_en";
+	.	
+
+
+##########################################
+# Mapping individuals in GRIB 4.1
+##########################################
+
+map:grib41 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags/4.1/@@GRIB-B-4-1.codeDiscipline@@.@@GRIB-B-4-1.CodeFlag@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:grib41Notation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property skos:notation;
+	d2rq:pattern "@@GRIB-B-4-1.codeDiscipline@@.@@GRIB-B-4-1.CodeFlag@@";	
+	.	
+map:grib41SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property skos:prefLabel;
+	d2rq:column "GRIB-B-4-1.MeaningParameterDescription_en"@en;
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-1.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-1.MeaningParameterDescription_en not like \"CCITT%\"";
+	.
+map:grib41Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property rdfs:comment;
+	d2rq:column "GRIB-B-4-1.Title_en"@en;
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-1.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-1.MeaningParameterDescription_en not like \"CCITT%\"";
+	.	
+map:grib41Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property rdfs:label;
+	d2rq:column "GRIB-B-4-1.MeaningParameterDescription_en"@en;
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en like \"Reserved%\" or GRIB-B-4-1.MeaningParameterDescription_en=\"Missing\" or GRIB-B-4-1.MeaningParameterDescription_en  like \"CCITT%\"";
+	.	
+map:grib41SkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:grib00;
+	d2rq:join "GRIB-B-4-1.codeDiscipline=GRIB-B-0-0.CodeFlag";
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-1.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-1.MeaningParameterDescription_en not like \"CCITT%\"";
+	.		
+map:grib41Reserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en like \"Reserved%\"";
+	.
+#map:grib41TypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib41;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:grib41TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-1.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-1.MeaningParameterDescription_en not like \"CCITT%\"";
+	.		
+map:grib41TypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataTypeScheme;
+	d2rq:condition "GRIB-B-4-1.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-1.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-1.MeaningParameterDescription_en not like \"CCITT%\"";
+	.	
+map:grib41TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:grib41Table;
+	.
+map:grib41TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property metaMap:nameSpace;
+	d2rq:pattern "@@GRIB-B-4-1.codeDiscipline@@.@@GRIB-B-4-1.CodeFlag@@";
+	.
+map:grib41TypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property wmo:codeFlag;
+	d2rq:column "GRIB-B-4-1.CodeFlag";
+	.
+map:grib41TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "GRIB-B-4-1.CodeFlag";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+map:grib41TypeStatus2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property iso19135:status;
+	d2rq:uriColumn "GRIB-B-4-1.CodeFlag";
+	d2rq:translateWith map:StatusTableISO;
+	.
+map:grib41wmoTitle a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property wmo:Title_en;
+	d2rq:column "GRIB-B-4-1.Title_en";
+	.	
+map:grib41wmoSubTitle a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property wmo:SubTitle_en;
+	d2rq:column "GRIB-B-4-1.SubTitle_en";
+	.			
+map:grib41wmoNote a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib41;
+	d2rq:property wmo:Note_en;
+	d2rq:column "GRIB-B-4-1.Note_en";
+	.	
+
+
+
+#######################
+## TODO: WE ARE HERE ##
+#######################
+
+##########################################
+# Mapping individuals in GRIB 4.2
+##########################################
+
+map:grib42 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "grib/codes+flags/4.2/@@GRIB-B-4-2.codeDiscipline@@.@@GRIB-B-4-2.parameterCategoryCode@@.@@GRIB-B-4-2.CodeFlag@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	#d2rq:condition "GRIB-B-4-2.parameterCategoryCode=0";					#fill here if we want to limit to temperatures
+	.
+map:grib42Notation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property skos:notation;
+	d2rq:pattern "@@GRIB-B-4-2.codeDiscipline@@.@@GRIB-B-4-2.parameterCategoryCode@@.@@GRIB-B-4-2.CodeFlag@@";	
+	.	
+map:grib42SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property skos:prefLabel;
+	d2rq:column "GRIB-B-4-2.MeaningParameterDescription_en"@en;
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-2.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-2.MeaningParameterDescription_en not like \"CCITT%\"";
+	.
+map:grib42Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property rdfs:comment;
+	d2rq:column "GRIB-B-4-2.Title_en"@en;
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-2.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-2.MeaningParameterDescription_en not like \"CCITT%\"";
+	.	
+map:grib42Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property rdfs:label;
+	d2rq:column "GRIB-B-4-2.MeaningParameterDescription_en"@en;
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en like \"Reserved%\" or GRIB-B-4-2.MeaningParameterDescription_en=\"Missing\" or GRIB-B-4-2.MeaningParameterDescription_en  like \"CCITT%\"";
+	.	
+map:grib42SkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:grib41;
+	d2rq:join "GRIB-B-4-1.CodeFlag=GRIB-B-4-2.parameterCategoryCode";
+	d2rq:join "GRIB-B-4-1.codeDiscipline=GRIB-B-4-2.codeDiscipline";
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-2.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-2.MeaningParameterDescription_en not like \"CCITT%\"";
+	.		
+map:grib42Reserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en like \"Reserved%\"";
+	.
+#map:grib42TypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib42;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:grib42TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-2.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-2.MeaningParameterDescription_en not like \"CCITT%\"";
+	.		
+map:grib42TypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataTypeScheme;
+	d2rq:condition "GRIB-B-4-2.MeaningParameterDescription_en not like \"Reserved%\" and GRIB-B-4-2.MeaningParameterDescription_en!=\"Missing\" and GRIB-B-4-2.MeaningParameterDescription_en not like \"CCITT%\"";
+	.	
+map:grib42TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:grib42Table;
+	.
+map:grib42TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property metaMap:nameSpace;
+	d2rq:pattern "@@GRIB-B-4-2.codeDiscipline@@.@@GRIB-B-4-2.parameterCategoryCode@@.@@GRIB-B-4-2.CodeFlag@@";
+	.
+map:grib42TypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:codeFlag;
+	d2rq:column "GRIB-B-4-2.CodeFlag";
+	.
+map:grib42TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "GRIB-B-4-2.CodeFlag";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:grib42TypeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:grib42;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "GRIB-B-4-2.CodeFlag";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+map:grib42wmoTitle a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:Title_en;
+	d2rq:column "GRIB-B-4-2.Title_en";
+	.	
+map:grib42wmoSubTitle a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:SubTitle_en;
+	d2rq:column "GRIB-B-4-2.SubTitle_en";
+	.			
+map:grib42wmoNote a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:Note_en;
+	d2rq:column "GRIB-B-4-2.Note_en";
+	.	
+map:grib42wmoUnitComments_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:UnitComments_en;
+	d2rq:column "GRIB-B-4-2.UnitComments_en";
+	d2rq:condition "codeDiscipline!=0 or parameterCategoryCode!=0";
+	.
+map:grib42wmoUnitComments_en2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:UnitComments_en;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common/c-6/005> ;
+	d2rq:condition "GRIB-B-4-2.codeDiscipline=0 and GRIB-B-4-2.parameterCategoryCode=0 and GRIB-B-4-2.UnitComments_en=\"K\"";
+	.	
+map:grib42wmoUnitComments_en3 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:UnitComments_en;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common/c-6/786> ;
+	d2rq:condition "GRIB-B-4-2.codeDiscipline=0 and GRIB-B-4-2.parameterCategoryCode=0 and GRIB-B-4-2.UnitComments_en=\"K/m\"";
+	.	
+map:grib42wmoUnitComments_en4 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:UnitComments_en;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common/c-6/811> ;
+	d2rq:condition "GRIB-B-4-2.codeDiscipline=0 and GRIB-B-4-2.parameterCategoryCode=0 and GRIB-B-4-2.UnitComments_en=\"W m-2\"";
+	.	
+map:grib42wmoUnitComments_en5 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:UnitComments_en;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/bufr/b/11/023> ;
+	d2rq:condition "GRIB-B-4-2.codeDiscipline=0 and GRIB-B-4-2.parameterCategoryCode=0 and GRIB-B-4-2.UnitComments_en=\"m2/s\"";
+	.	
+	
+map:grib42wmoUnitComments_en6 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:grib42;
+	d2rq:property wmo:UnitComments_en;
+	d2rq:column "GRIB-B-4-2.UnitComments_en";
+	d2rq:condition "GRIB-B-4-2.codeDiscipline=0 and GRIB-B-4-2.parameterCategoryCode=0 and GRIB-B-4-2.UnitComments_en=\"Numeric\"";
+	.			
+
+#########################################
+#
+#########################################
+
+
+
+
+#TODO the three GRIB tables plus their term with skos (and skos to the scheme)	
+
+map:StatusTableWMO a d2rq:TranslationTable;
+        d2rq:translation [ d2rq:databaseValue "Validation"; d2rq:rdfValue wmo:Validation; ];
+        d2rq:translation [ d2rq:databaseValue "Operational"; d2rq:rdfValue wmo:Operational; ];
+        .

@@ -1,0 +1,1461 @@
+####################################################################################################
+# BUFR/CREX TableB + code table mapping file. (V2)
+# Concepts for category 12 (Temperatures), 11 and 20
+#
+# Uses map2pre dictionary, processed by MetMap and MetOp
+####################################################################################################
+@prefix metaMap: 	<http://reference.metoffice.gov.uk/data/wmo/meta/mapping#> .
+@prefix metModel:	<http://reference.metoffice.gov.uk/data/wmo/meta/model#> .
+@prefix metExtra:	<http://reference.metoffice.gov.uk/data/wmo/def/met#> .
+@prefix iso19135: 	<http://reference.metoffice.gov.uk/data/wmo/def/iso19135#> .
+@prefix wmo: 		<http://reference.metoffice.gov.uk/data/wmo/def/wmo#> .
+@prefix map: 		<http://reference.metoffice.gov.uk/data/wmo/mappings/TableBMap#> .	# this mapping
+@prefix generic:	<http://reference.metoffice.gov.uk/data/wmo/mapping/generic1#> .
+@prefix :<http://reference.metoffice.gov.uk/data/wmo/tdcf/> .																							#This is the default!
+
+@prefix rdf:    	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    	<http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: 		<http://www.w3.org/2004/02/skos/core#> .
+
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+
+#####################################################################################################
+# UPPER PARTITIONS
+#
+# There are four top collections: "BUFR" , "CREX" , "BUFRCREX" and "Common"
+# These correspond to standards (or standard independent) table collections, and are not versioned
+# Note: these specifications could as well be made directly in RDF and passed as input to the model
+#       constructor.
+#
+#####################################################################################################
+
+
+
+
+
+
+
+#####################################################################################################
+# Mapping Table A(bufr),B(bufr+crex),Code and Flags, C-1,C-11,C-6,C-12,C-13
+#
+#####################################################################################################
+
+
+
+
+##########################################
+# TableB BUFR
+##########################################		
+map:tableBbufr a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/b";								# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableBbufrLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table B"@en;
+	.
+map:tableBbufrNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "b";
+	.	
+map:tableBbufrBIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/bufr>;
+	.
+map:tableBbufrVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufr;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableBbufrType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBbufr;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+																# TODO perhaps we want to declare an owner here ?
+
+##########################################
+# TableB CREX
+##########################################	
+map:tableCrex a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/b";									# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableCrexLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table B"@en;
+	.
+map:tableCrexNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "b";
+	.	
+map:tableCrexIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/crex>;
+	.
+map:tableCrexVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCrex;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableCrexType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableCrex;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+	
+		
+##########################################
+# BUFR/CREX codes and flags table
+##########################################		
+map:tableCodeFlags a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufrcrex/codes+flags";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:tableCodeFlagsNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "codes+flags";
+	.
+map:tableCodeFlagsLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "BUFR and CREX Codes and Flags Table"@en;
+	.
+map:tableCodeFlagsComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Codes used in combination with BUFR or CREX table B to identify object of properties. Flags are compressed sets of statements."@en;
+	.		
+map:tableCodeFlagsIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/bufrcrex>;
+	.		
+map:tableCodeFlagsVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableCodeFlagsType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableCodeFlags;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:tableBufrCrexCodesFlagsPragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableCodeFlags;
+	d2rq:property metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppressFlagsLimit;
+	.
+
+
+#####################################################################################################
+# Mapping classes
+# (This basically only applies to Table B)
+#
+#####################################################################################################
+
+##########################################
+# Classes for TableB / BUFR
+# Note: additional information not in the
+# cvs file will be inserted via external
+# RDF files.
+##########################################
+
+# TableB (bufr) specific collection (0-40)
+map:tableBbufrCodes a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/b/@@BUFR-CREX-B.ClassNoNotation@@";
+	d2rq:class metaMap:TerminologySet;
+	d2rq:containsDuplicates "true";
+	.	
+map:tableBbufrCodesLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufrCodes;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CREX-B.ClassName_en"@en;
+	.
+map:tableBbufrCodesDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufrCodes;
+	d2rq:property rdfs:description;
+	d2rq:pattern "This is a registry of properties identified by no. @@BUFR-CREX-B.ClassNo@@ and generally used in BUFR messages to describe @@BUFR-CREX-B.ClassName_en@@"@en;
+	.	
+#note: this is not a concept and doesn't have a pref-label.	
+#map:tableBbufrCodesSKOSPrefLabel a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBbufrCodes;
+#	d2rq:property skos:prefLabel;
+#	d2rq:column "BUFR-CREX-B.ClassName_en"@en;
+#	.	
+map:tableBbufrCodesIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufrCodes;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableBbufr;
+	.	
+map:tableBbufrCodesNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufrCodes;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "BUFR-CREX-B.ClassNoNotation";								# TODO Should we pad zeros here ?
+	.	
+map:tableBbufrCodesSKOSNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufrCodes;
+	d2rq:property skos:notation;
+	d2rq:pattern "F0X@@BUFR-CREX-B.ClassNoNotation@@";						# TODO Should we pad zeros here ?
+	.	
+map:tableBbufrCodesVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBbufrCodes;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableBbufrCodesInType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBbufrCodes;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.
+#map:tableBbufrCodesInRegistry a d2rq:PropertyBridge;				#This is embedded in the system as an RDF export
+#	d2rq:belongsToClassMap map:tableBbufrCodes;						#Should it be in TDB as well ?
+#	d2rq:property iso19135:subRegisterOf;							#Is it ?
+#	d2rq:refersToClassMap map:tableBbufr;
+#	.	
+	
+##########################################
+# Classes for TableB / CREX
+# Note: additional information not in the
+# cvs file will be inserted via external
+# RDF files.
+##########################################	
+	
+# TableB (crex) specific collection (0-40)
+map:tableBcrexCodes a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/b/@@BUFR-CREX-B.ClassNoNotation@@";
+	d2rq:class metaMap:TerminologySet;
+	d2rq:containsDuplicates "true";
+	.	
+map:tableBcrexCodesLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBcrexCodes;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CREX-B.ClassName_en"@en;
+	.
+map:tableBcrexCodesDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBcrexCodes;
+	d2rq:property rdfs:comment;
+	d2rq:pattern "This is a registry of properties identified by no. @@BUFR-CREX-B.ClassNo@@ and genereally used in CREX messages to describe @@BUFR-CREX-B.ClassName_en@@"@en;
+	.		
+#map:tableBcrexCodesSKOSLabel a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBcrexCodes;
+#	d2rq:property skos:prefLabel;
+#	d2rq:column "BUFR-CREX-B.ClassName_en"@en;
+#	.	
+
+# DEBUG
+map:tableBcrexCodesIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBcrexCodes;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableCrex;
+	.	
+map:tableBcrexCodesNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBcrexCodes;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "BUFR-CREX-B.ClassNoNotation";										# TODO Should we pad zeros here ?
+	.	
+map:tableBcrexCodesSKOSNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBcrexCodes;
+	d2rq:property skos:notation;
+	d2rq:pattern "FB@@BUFR-CREX-B.ClassNoNotation@@";								# TODO Should we pad zeros here ?
+	.		
+map:tableBcrexCodesVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableBcrexCodes;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableBcrexCodesTypeRegistry a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBcrexCodes;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.
+#map:tableBcrexCodesInRegistry a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableBcrexCodes;
+#	d2rq:property iso19135:subRegisterOf;							#Is it ?
+#	d2rq:refersToClassMap map:tableCrex;
+#	.	
+
+
+
+
+#####################################################################################################
+# Elements that support detailed mapping of cat. 11,12,20 in TableB
+#
+#####################################################################################################
+
+
+##########################################
+# Extra elements for Cat. 12 (temperatues)
+# Note as these need to be registered also 
+# elsewhere:
+# x-registry -> common (CommonMap)
+# scheme -> schemes (CommonMap)
+##########################################	
+
+##########################################
+# B/12 x-registry
+##########################################	
+map:temperaturesXRegistry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-temperatures";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:temperaturesXRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-temperatures";
+	.		
+map:temperaturesXRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/common>;
+	.	
+map:temperaturesXRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of temperatures codes derived, but not defined, in tables"@en;
+	.
+map:temperaturesXRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Temperatures"@en;
+	.	
+map:temperaturesXRegistryType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	.	
+	
+map:temperaturesXRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesXRegistry;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+##########################################
+# B/12 scheme
+##########################################	
+map:temperaturesScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/temperatures";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:temperaturesSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "temperatures";
+	.		
+map:temperaturesSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/schemes>;
+	.	
+map:temperaturesSchemeDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A concept scheme for temperatures"@en;
+	.
+map:temperaturesSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Temperatures"@en;
+	.	
+map:temperaturesSchemeSKOSType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:ConceptScheme;
+	.	
+map:temperaturesSchemeTop a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property skos:hasTopConcept;
+	d2rq:refersToClassMap map:temperatureTopConcept;
+	.
+
+map:temperaturesSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperaturesScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# B/12 Top concept
+##########################################
+map:temperatureTopConcept a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-temperatures/temperatureMeasure" ;
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:temperatureTopConceptNSt a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "temperatureMeasure"@en;
+	.	
+map:temperatureTopConceptType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.	
+map:temperatureTopConceptLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "temperature"@en;
+	.	
+map:temperatureTopConceptComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "A generic temperature measure"@en;
+	.	
+map:temperatureTopConceptInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap	map:temperaturesXRegistry;
+	.
+map:temperatureTopConceptInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap	map:temperaturesScheme;
+	.	
+map:temperatureTopConceptVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:temperatureTopConcept;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# Extra elements for Code 020003
+# Present weather ref. Table C cat 20.
+# Note as these need to be registered also 
+# elsewhere:
+# x-registry -> common (CommonMap)
+# scheme -> schemes (CommonMap)
+##########################################	
+
+##########################################
+# Code 020003  x-registry
+##########################################	
+map:presentWeatherXRegistry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-weather";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:presentWeatherXRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-weather";
+	.		
+map:presentWeatherXRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/common>;
+	.	
+map:presentWeatherXRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of (present) weathers codes derived, but not defined, in tables"@en;
+	.
+map:presentWeatherXRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Present) Weather"@en;
+	.	
+map:presentWeatherXRegistryType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	.	
+	
+map:presentWeatherXRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+##########################################
+# Scheme: Code 020003  
+##########################################	
+map:presentWeatherScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/weather";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:presentWeatherSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "weather";
+	.		
+map:presentWeatherSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/schemes>;
+	.	
+map:presentWeatherSchemeDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A concept scheme for (present) weather"@en;
+	.
+map:presentWeatherSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Present) Weather"@en;
+	.	
+map:presentWeatherSchemeSKOSType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:ConceptScheme;
+	.	
+map:presentWeatherSchemeTop a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property skos:hasTopConcept;
+	d2rq:refersToClassMap map:presentWeatherTopConcept;
+	.
+
+map:presentWeatherSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# Code 020003 Top concept
+##########################################
+map:presentWeatherTopConcept a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-weather/weather" ;
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:presentWeatherTopConceptNSt a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "weather"@en;
+	.	
+map:presentWeatherTopConceptType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.	
+map:presentWeatherTopConceptLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "weather"@en;
+	.	
+map:presentWeatherTopConceptComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "A generic weather"@en;
+	.	
+map:presentWeatherTopConceptInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap	map:presentWeatherXRegistry;
+	.
+map:presentWeatherTopConceptInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap	map:presentWeatherScheme;
+	.	
+map:presentWeatherTopConceptVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherTopConcept;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.				
+		
+##########################################
+# Extra elements for Code 020136
+# Suppl. Cloud Type ref. Table C cat 20.
+# Note as these need to be registered also 
+# elsewhere:
+# x-registry -> common (CommonMap)
+# scheme -> schemes (CommonMap)
+##########################################	
+
+##########################################
+# Code 020136  x-registry
+##########################################	
+map:subCloudTypeXRegistry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-clouds";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:subCloudTypeXRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-clouds";
+	.		
+map:subCloudTypeXRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <global/common>;
+	.	
+map:subCloudTypeXRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of could types codes derived, but not defined, in tables"@en;
+	.
+map:subCloudTypeXRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Sub) Cloud type"@en;
+	.	
+map:subCloudTypeXRegistryType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeXRegistry;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	.	
+	
+map:subCloudTypeXRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:presentWeatherXRegistry;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+##########################################
+# Code 0200136  scheme
+##########################################	
+map:subCloudTypeScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/clouds";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:subCloudTypeSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "clouds";
+	.		
+map:subCloudTypeSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdfc/schemes>;
+	.	
+map:subCloudTypeSchemeDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A concept scheme for cloud types"@en;
+	.
+map:subCloudTypeSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "(Sub) cloud types"@en;
+	.	
+map:subCloudTypeSchemeSKOSType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:ConceptScheme;
+	.	
+map:subCloudTypeSchemeTop a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property skos:hasTopConcept;
+	d2rq:refersToClassMap map:subCloudTypeTopConcept;
+	.
+
+map:subCloudTypeSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+##########################################
+# Code 020136 Top concept
+##########################################
+map:subCloudTypeTopConcept a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-clouds/clouds" ;
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:subCloudTypeTopConceptNSt a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "clouds"@en;
+	.	
+map:subCloudTypeTopConceptType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.	
+map:subCloudTypeTopConceptLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "clouds"@en;
+	.	
+map:subCloudTypeTopConceptComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Any type of clouds"@en;
+	.	
+map:subCloudTypeTopConceptInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap	map:subCloudTypeXRegistry;
+	.
+map:subCloudTypeTopConceptInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap	map:subCloudTypeScheme;
+	.	
+map:subCloudTypeTopConceptVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:subCloudTypeTopConcept;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.			
+
+
+
+
+
+##########################################
+# Mapping classes
+# Both bufr and crex
+# We restrict to classes 12,11,20  
+# we first map the common bits
+# then the one specific for each class
+##########################################	
+
+##########################################
+# Common bits (bufr)
+##########################################
+
+#Mapping temperatures(bufr)
+map:bufrCode a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufr/b/@@BUFR-CREX-B.ClassNoNotation@@/@@BUFR-CREX-B.shortCode@@";
+	d2rq:condition "BUFR-CREX-B.ClassNo=12 or BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:bufrCodeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CREX-B.ElementName_en"@en;
+	.
+map:bufrCodeComment12 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property rdfs:comment;
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, with the specific unit of measure or precision as in use in bufr."@en;
+	.		
+map:bufrCodeComment11-20 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property rdfs:comment;
+	d2rq:condition "BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, with the specific encoding as in use in bufr."@en;
+	.		
+	
+map:bufrCodeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "BUFR-CREX-B.shortCode";
+	.		
+map:bufrCodeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:bufrCodeTypeItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:bufrCode;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:bufrCodeTypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit!=\"Code table\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\"";
+	.	
+map:bufrCodeTypeSKOSCollection a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Code table\"";
+	.	
+map:bufrCodeCollectionMember a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property skos:member;
+	d2rq:refersToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Code table\"";
+	d2rq:join "BUFR-CREX-B.FXY=BUFR-CODES-Flags.FXY";
+	.	
+map:bufrCodeTypeFlags a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property rdf:type;
+	d2rq:constantValue wmo:Flag;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Flag table\"";
+	.	
+map:bufrFlagMember a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:dynamicProperty "http://reference.metoffice.gov.uk/data/wmo/def/wmo#codeForBit@@BUFR-CODES-Flags.CodeFigure@@";
+	d2rq:refersToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Flag table\"";
+	d2rq:join "BUFR-CREX-B.FXY=BUFR-CODES-Flags.FXY";
+	.		
+	
+map:bufrCodeSKOSNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property skos:notation;
+	d2rq:pattern "F0X@@BUFR-CREX-B.ClassNoNotation@@Y@@BUFR-CREX-B.shortCode@@";						# TODO Should we pad zeros here ?
+	.	
+
+map:BufrUnit a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property wmo:BUFR_Unit;
+	d2rq:propertyDefinitionLabel "BUFR Unit of measure";
+	d2rq:column "BUFR-CREX-B.BUFR_Unit";
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit!=\"K\" and BUFR-CREX-B.BUFR_Unit!=\"Code table\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\"";
+
+	.
+map:BufrUnit2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property wmo:BUFR_Unit;
+	d2rq:propertyDefinitionLabel "BUFR Unit of measure";
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common/c-6/005>;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"K\"";
+
+	.	
+	
+	
+map:BUFR_Scale a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property wmo:BUFR_Scale;
+	d2rq:propertyDefinitionLabel "BUFR Scale";
+	d2rq:column "BUFR-CREX-B.BUFR_Scale";
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit!=\"Code table\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\"";
+	d2rq:datatype xsd:int;
+	.
+
+map:BUFR_ReferenceValue a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property wmo:BUFR_ReferenceValue;
+	d2rq:propertyDefinitionLabel "BUFR Reference Value";
+	d2rq:column "BUFR-CREX-B.BUFR_ReferenceValue";
+	d2rq:datatype xsd:int;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit!=\"Code table\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\"";
+	.
+
+map:BUFR_DataWidth_Bits a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property wmo:BUFR_DataWidth_Bits;
+	d2rq:propertyDefinitionLabel "BUFR Data Width Bits";
+	d2rq:column "BUFR-CREX-B.BUFR_DataWidth_Bits";
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit!=\"Code table\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\"";
+	d2rq:datatype xsd:int;
+	.	
+
+map:bufrCodeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableBbufrCodes;
+	.	
+map:bufrCodeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "BUFR-CREX-B.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:bufrCodeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:bufrCode;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "BUFR-CREX-B.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+
+
+##########################################
+# Common bits (crex)
+##########################################
+map:crexCode a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crex/b/@@BUFR-CREX-B.ClassNoNotation@@/@@BUFR-CREX-B.shortCode@@";
+	d2rq:condition "BUFR-CREX-B.ClassNo=12 or BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:crexCodeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CREX-B.ElementName_en"@en;
+	.
+map:crexCodeComment12 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property rdfs:comment;
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, with the specific unit of measure or precision as in use in crex."@en;
+	.		
+map:crexCodeComment11-20 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property rdfs:comment;
+	d2rq:condition "BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, with the specific encoding as in use in crex."@en;
+	.		
+	
+map:crexCodeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "BUFR-CREX-B.shortCode";
+	.		
+map:crexCodeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:crexCodeTypeItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexCode;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:crexCodeTypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit!=\"Code table\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\"";
+	.	
+map:crexCodeTypeSKOSCollection a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Code table\"";
+	.	
+map:crexCodeCollectionMember a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property skos:member;
+	d2rq:refersToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Code table\"";
+	d2rq:join "BUFR-CREX-B.FXY=BUFR-CODES-Flags.FXY";
+	.	
+map:crexCodeTypeFlags a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property rdf:type;
+	d2rq:constantValue wmo:Flag;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Flag table\"";
+	.	
+map:bufrFlagMember a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:dynamicProperty "http://reference.metoffice.gov.uk/data/wmo/def/wmo#codeForBit@@BUFR-CODES-Flags.CodeFigure@@";
+	d2rq:refersToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:condition "BUFR-CREX-B.BUFR_Unit=\"Flag table\"";
+	d2rq:join "BUFR-CREX-B.FXY=BUFR-CODES-Flags.FXY";
+	.		
+	
+map:crexCodeSKOSNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property skos:notation;
+	d2rq:pattern "FBX@@BUFR-CREX-B.ClassNoNotation@@Y@@BUFR-CREX-B.shortCode@@";						# TODO Should we pad zeros here ?
+	.	
+
+map:CrexUnit a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property wmo:CREX_Unit;
+	d2rq:propertyDefinitionLabel "CREX Unit of measure";
+	d2rq:column "BUFR-CREX-B.CREX_Unit";
+	d2rq:condition "BUFR-CREX-B.CREX_Unit!=\"C\" and BUFR-CREX-B.BUFR_Unit!=\"Flag table\" and BUFR-CREX-B.BUFR_Unit!=\"Code table\"";
+	.
+map:CrexUnit2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property wmo:CREX_Unit;
+	d2rq:propertyDefinitionLabel "CREX Unit of measure";
+	d2rq:constantValue	<http://reference.metoffice.gov.uk/data/wmo/tdcf/common/c-6/060>;
+	d2rq:condition "BUFR-CREX-B.CREX_Unit=\"C\"";
+	.	
+	
+map:CREX_Scale a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property wmo:CREX_Scale;
+	d2rq:propertyDefinitionLabel "CREX Scale";
+	d2rq:column "BUFR-CREX-B.CREX_Scale";
+	d2rq:datatype xsd:int;
+	.
+
+
+
+map:CREX_DataWidthChar a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property wmo:CREX_Data_WidthChar;
+	d2rq:propertyDefinitionLabel "CREX Data Width Bits";
+	d2rq:column "BUFR-CREX-B.CREX_Data_WidthChar";
+	d2rq:datatype xsd:int;
+	.	
+
+
+map:crexCodeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableBcrexCodes;
+	.	
+map:crexCodeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "BUFR-CREX-B.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:crexCodeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexCode;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "BUFR-CREX-B.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+
+##########################################
+# Mapping what is specific for temperatures
+##########################################	
+	
+map:bufrTemperaturesBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:commonTemperatures;
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	.	
+map:bufrTemperaturesInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:temperaturesScheme;
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	.	
+
+map:crexTemperaturesBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:commonTemperatures;
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	.	
+map:crexTemperaturesInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crexCode;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:temperaturesScheme;
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	.	
+
+##########################################
+# Common temperatures
+##########################################	
+map:commonTemperatures a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-temperatures/@@BUFR-CREX-B.shortCode@@";
+	d2rq:condition "BUFR-CREX-B.ClassNo=12";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:commonTemperaturesLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CREX-B.ElementName_en"@en;
+	.
+map:commonTemperaturesComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property rdfs:comment;
+	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, independent from units used in bufr or crex"@en;
+	.		
+map:commonTemperaturesNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property metaMap:localId;
+	d2rq:column "BUFR-CREX-B.shortCode";
+	.		
+map:commonTemperaturesVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.		
+map:commonTemperaturesType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:concept;
+	.
+map:commonTemperaturesInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:temperaturesXRegistry;
+	.	
+#Note: we don't need to state relations with the scheme, as this are inferred from reflexivity.
+
+map:commonTemperaturesBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:temperatureTopConcept;
+	.	
+map:commonTemperaturesInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:commonTemperatures;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:temperaturesScheme;
+	.	
+
+
+
+
+
+
+
+
+
+#TODO Make as for bufr
+
+#Mapping temperatures(crex)
+#map:crexTemperatures a d2rq:ClassMap;
+#	d2rq:dataStorage map:database;
+#	d2rq:uriPattern "crex/b/@@BUFR-CREX-B.ClassNo@@/@@BUFR-CREX-B.FXY@@";
+#	d2rq:condition "BUFR-CREX-B.ClassNo=12 or BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+#	d2rq:class metaMap:TerminologyIndividual;
+#	.
+#map:crexTemperaturesLabel a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property rdfs:label;
+#	d2rq:column "BUFR-CREX-B.ElementName_en"@en;
+#	.
+#map:crexTemperaturesComment12 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property rdfs:comment;
+#	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, with the specific unit of measure or precision as in use in crex."@en;
+#	.		
+#map:crexTemperaturesComment11-20 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property rdfs:comment;
+#	d2rq:condition "BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+#	d2rq:pattern "A code for @@BUFR-CREX-B.ElementName_en@@, with the specific encoding as in use in crex."@en;
+#	.			
+		
+#map:crexTemperaturesNS a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property metaMap:localId;
+#	d2rq:column "BUFR-CREX-B.FXY";
+#	.		
+#map:crexTemperaturesVersion a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property metExtra:hasVersion;
+#	d2rq:constantValue "i0";
+#	.	
+#map:crexTemperaturesType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:registerItem;
+#	.	
+#map:crexTemperaturesSKOSNotation a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property skos:notation;
+#	d2rq:pattern "F0X@@BUFR-CREX-B.ClassNo@@Y@@BUFR-CREX-B.FXY@@";						# TODO Should we pad zeros here ?
+#	.	
+
+#map:CrexUnit a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property wmo:CREX_Unit;
+#	d2rq:propertyDefinitionLabel "CREX Unit of measure";
+#	d2rq:column "BUFR-CREX-B.CREX_Unit";
+#	.
+	
+#map:CREX_Scale a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property wmo:CREX_Scale;
+#	d2rq:propertyDefinitionLabel "CREX Scale";
+#	d2rq:column "BUFR-CREX-B.CREX_Scale";
+#	d2rq:datatype xsd:int;
+#	.
+
+
+
+#map:CREX_DataWidthChar a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property wmo:CREX_Data_WidthChar;
+#	d2rq:propertyDefinitionLabel "CREX Data Width Bits";
+#	d2rq:column "BUFR-CREX-B.CREX_Data_WidthChar";
+#	d2rq:datatype xsd:int;
+#	.	
+
+#map:crexTemperaturesInRegistry a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property metaMap:containedIn;
+#	d2rq:refersToClassMap map:tableBcrexCodes;
+#	.	
+#Note: we don't need to state relations with the scheme, as this are inferred from reflexivity.
+
+#map:crexTemperaturesBroader a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property skos:broader;
+#	d2rq:refersToClassMap map:commonTemperatures;
+#	.	
+
+#map:crexTemperaturesInScheme a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:crexTemperatures;
+#	d2rq:property skos:inScheme;
+#	d2rq:refersToClassMap map:temperaturesScheme;
+#	.	
+
+
+
+##########################################
+# Mapping grib codes and flags table
+##########################################	
+
+map:BufrCrexCodeAndFlagsCodes a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "bufrcrex/codes+flags/@@BUFR-CODES-Flags.FXY@@.@@BUFR-CODES-Flags.CodeFigure@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	d2rq:containsDuplicates "true";
+	d2rq:condition "(BUFR-CODES-Flags.FXY=BUFR-CREX-B.FXY) and (BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=12 or BUFR-CREX-B.ClassNo=20) and BUFR-CODES-Flags.CodeFigure not like \"%to%\"";
+	.	
+map:tableBufrCrexCodesFlagsLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CODES-Flags.EntryName_en"@en;
+	.
+map:tableBufrCrexCodesFlagsDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property rdfs:description;
+	d2rq:pattern "A possible value for the Table B code @@BUFR-CODES-Flags.ElementName_en@@"@en;
+	.	
+map:tableBufrCrexCodesFlagsIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableCodeFlags;
+	.		
+#map:tableBufrCrexCodesFlagsType a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegistryItem;
+#	.	
+map:tableBufrCrexCodesFlagsTypeSKOS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "BUFR-CODES-Flags.EntryName_en!=\"Missing value\" and BUFR-CODES-Flags.EntryName_en!=\"Reserved\" and BUFR-CODES-Flags.EntryName_en!=\"Nil\"";
+	.	
+	
+map:tableBufrCrexCodesFlagsXweatherInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:presentWeatherScheme; 
+	d2rq:condition "BUFR-CODES-Flags.FXY=20003 and BUFR-CODES-Flags.FXY not like \"%-%\"";
+	.
+map:BufrCrexXweatheTopConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:presentWeatherTopConcept; 
+	d2rq:condition "BUFR-CODES-Flags.FXY=20003 and BUFR-CODES-Flags.FXY not like \"%-%\"";
+	.	
+	
+		
+map:tableBufrCrexCodesFlagsSKOSNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property skos:notation;
+	d2rq:pattern "@@BUFR-CODES-Flags.FXY@@.@@BUFR-CODES-Flags.CodeFigure@@";						# TODO Should we pad zeros here ?
+	d2rq:condition "BUFR-CODES-Flags.EntryName_en!=\"Missing value\" and BUFR-CODES-Flags.EntryName_en!=\"Reserved\" and BUFR-CODES-Flags.EntryName_en!=\"Nil\"";
+	.	
+map:tableBufrCrexCodesFlagsVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+map:tableBufrCrexCodesFlagsStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "BUFR-CODES-Flags.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:tableBufrCrexCodesFlagsStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "BUFR-CODES-Flags.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+	
+map:tableBufrCrexCodesFlagsElementName_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property wmo:ElementName_en;
+	d2rq:column "BUFR-CODES-Flags.ElementName_en";
+	.
+	
+map:tableBufrCrexCodesFlagsCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property wmo:CodeFigure;
+	d2rq:column "BUFR-CODES-Flags.CodeFigure";
+	.
+	
+map:tableBufrCrexCodesFlagsEntryName_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property wmo:EntryName_en;
+	d2rq:column "BUFR-CODES-Flags.EntryName_en";
+	.	
+	
+map:tableBufrCrexCodesFlagsEntryName_sub1_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property wmo:EntryName_sub1_en;
+	d2rq:column "BUFR-CODES-Flags.EntryName_sub1_en";
+	.
+map:tableBufrCrexCodesFlagsEntryName_sub2_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexCodeAndFlagsCodes;
+	d2rq:property wmo:EntryName_sub2_en;
+	d2rq:column "BUFR-CODES-Flags.EntryName_sub2_en";
+	.	
+# are they concepts, and are they in some schema ?
+
+##########################################
+# Mapping grib "to" codes 
+# we are only mapping the terms in 
+# present weather, that is the only case
+# in our selection where "to" codes
+# are present. The other being sub cloud types
+##########################################	
+
+map:BufrCrexXweather a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-weather/@@BUFR-CODES-Flags.FXY@@.@@BUFR-CODES-Flags.CodeFigure@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	d2rq:containsDuplicates "true";
+	d2rq:condition "BUFR-CODES-Flags.FXY=20003 and BUFR-CODES-Flags.CodeFigure like \"%to%\"";
+	.	
+map:BufrCrexXweatherLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property rdfs:label;
+	d2rq:column "BUFR-CODES-Flags.EntryName_en"@en;
+	.
+map:BufrCrexXweatherDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property rdfs:description;
+	d2rq:pattern "A code for a concept relative to @@BUFR-CODES-Flags.ElementName_en@@, that is not explicitely defined in tables"@en;
+	.	
+map:BufrCrexXweatherFlagsIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:presentWeatherXRegistry; 
+	.		
+
+map:BufrCrexXweatherTypeSKOS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.
+#map:BufrCrexXweatherTypeItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:BufrCrexXweather;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegistryItem;
+#	.		
+map:BufrCrexXweatherSKOSNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property skos:notation;
+	d2rq:pattern "@@BUFR-CODES-Flags.CodeFigure@@";						# TODO Should we pad zeros here ?
+	.	
+map:BufrCrexXweatherVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+map:BufrCrexXweatherStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "BUFR-CODES-Flags.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:BufrCrexXweatherStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:BufrCrexXweather;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "BUFR-CODES-Flags.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+	
+map:BufrCrexXweatherElementName_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property wmo:ElementName_en;
+	d2rq:column "BUFR-CODES-Flags.ElementName_en";
+	.
+	
+map:BufrCrexXweatherCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property wmo:CodeFigure;
+	d2rq:column "BUFR-CODES-Flags.CodeFigure";
+	.
+	
+map:BufrCrexXweatherEntryName_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property wmo:EntryName_en;
+	d2rq:column "BUFR-CODES-Flags.EntryName_en";
+	.	
+	
+map:BufrCrexXweatherEntryName_sub1_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property wmo:EntryName_sub1_en;
+	d2rq:column "BUFR-CODES-Flags.EntryName_sub1_en";
+	.
+map:BufrCrexXweatherEntryName_sub2_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property wmo:EntryName_sub2_en;
+	d2rq:column "BUFR-CODES-Flags.EntryName_sub2_en";
+	.	
+
+map:BufrCrexXweatherInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:presentWeatherScheme; 
+	.
+
+map:BufrCrexXweatheBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:BufrCrexXweather;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:presentWeatherTopConcept; 
+	.
+
+
+
+
+
+
+##########################################
+# Mapping relatins between codes 
+# in bufr/grib 
+##########################################	
+
+map:bufrWindOrWeatherRelated a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:bufrCode;
+	d2rq:property skos:exactMatch;
+	d2rq:refersToClassMap map:crexCode;
+	d2rq:condition "BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+	.	
+	
+
+########################################################
+# We need to refer to some bits of C6 to map properties
+########################################################
+##########################################
+# Mapping individuals in C-6 
+##########################################
+
+#this is really all we need!, hopefully
+#map:C6 a d2rq:ClassMap;
+#	d2rq:dataStorage map:database;
+#	d2rq:uriPattern "common/c-6/@@C-6.CodeFigure@@";
+#	d2rq:class iso19135:RegistryItem; 
+#	.
+#(note we don't want the builder to act on this).
+	
+
+
+	
+
+
+
+######################################
+# Mapping states, for all of the above
+######################################
+#map:codesForStatusCrex a d2rq:ClassMap;
+#	d2rq:dataStorage map:database;
+#	d2rq:uriPattern "crex/b/@@BUFR-CREX-B.ClassNo@@/@@BUFR-CREX-B.FXY@@";
+#	d2rq:condition "BUFR-CREX-B.ClassNo=12 or BUFR-CREX-B.ClassNo=11 or BUFR-CREX-B.ClassNo=20";
+#	d2rq:class metaMap:TerminologyIndividual;
+#	.
+	
+
+map:StatusTableWMO a d2rq:TranslationTable;
+        d2rq:translation [ d2rq:databaseValue "Validation"; d2rq:rdfValue wmo:Validation; ];
+        d2rq:translation [ d2rq:databaseValue "Operational"; d2rq:rdfValue wmo:Operational; ];
+        .
+
+

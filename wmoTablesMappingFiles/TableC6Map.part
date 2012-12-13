@@ -1,0 +1,392 @@
+####################################################################################################
+# BUFR/CREX TableB + code table mapping file. (V2)
+# Concepts for category 12 (Temperatures)
+#
+# Uses map2pre dictionary, processed by MetMap and MetOp
+####################################################################################################
+@prefix metaMap: 	<http://reference.metoffice.gov.uk/data/wmo/meta/mapping#> .
+@prefix metModel:	<http://reference.metoffice.gov.uk/data/wmo/meta/model#> .
+@prefix metExtra:	<http://reference.metoffice.gov.uk/data/wmo/def/met#> .
+@prefix iso19135: 	<http://reference.metoffice.gov.uk/data/wmo/def/iso19135#> .
+@prefix wmo: 		<http://reference.metoffice.gov.uk/data/wmo/def/wmo#> .
+@prefix map: 		<http://reference.metoffice.gov.uk/data/wmo/mappings/TableC6Map#> .	# this mapping
+@prefix generic:	<http://reference.metoffice.gov.uk/data/wmo/mapping/generic1#> .
+@prefix :<http://reference.metoffice.gov.uk/data/wmo/tdcf/> .																							#This is the default!
+
+@prefix rdf:    	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    	<http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: 		<http://www.w3.org/2004/02/skos/core#> .
+
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+																					#This is the default!
+
+
+
+
+#####################################################################################################
+# Mapping Table C-6
+#
+#####################################################################################################
+
+
+
+##########################################
+# TableC-6
+##########################################	
+map:tableC6 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-6";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC6Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-6"@en;
+	.
+map:tableC6Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Unit of measure"@en;				# TODO to verify
+	.	
+map:tableC6NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-6";
+	.	
+map:tableC6In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.
+map:tableC6Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC6;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC6Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC6;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+##########################################
+# Schema: unit of measure
+##########################################	
+
+map:dataUnitScheme a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "schemes/dataUnits";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:dataUnitSchemeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "dataUnits";
+	.		
+map:dataUnitSchemeContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.	
+map:dataUnitSchemeDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Data units in use in GRIB"@en;
+	.
+map:dataUnitSchemeLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data units"@en;
+	.	
+map:dataUnitSchemeSKOSType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:ConceptScheme;
+	.	
+map:dataUnitSchemeTop a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property skos:hasTopConcept;
+	d2rq:refersToClassMap map:dataUnitTopConcept;
+	.
+map:dataUnitSchemeVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitScheme;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.
+	
+	
+	
+	
+	
+##########################################
+# x-register for data units
+##########################################		
+	
+map:x-dataUnits a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataUnits";
+	d2rq:class metaMap:TerminologySet;
+	.
+map:x-dataUnitsRegistryNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-dataUnits";
+	.		
+map:x-dataUnitsRegistryContained a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.	
+map:x-dataUnitsRegistryDescription a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "A collection of data units, in addition to the one defined in BUFR/CREX/GRIB"@en;
+	.
+map:x-dataUnitsRegistryLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Data units"@en;
+	.	
+map:x-dataUnitsRegistryType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	.	
+
+map:x-dataUnitsRegistryVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:x-dataUnits;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+##########################################
+# data unit top concept
+##########################################	
+map:dataUnitTopConcept a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataUnits/dataUnit" ;
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:dataUnitTopConceptNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "dataUnit"@en;
+	.	
+map:dataUnitTopConceptType a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.	
+map:dataUnitTopConceptLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "data unit"@en;
+	.	
+map:dataUnitTopConceptComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Any data unit"@en;
+	.	
+map:dataUnitTopConceptInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap	map:x-dataUnits;
+	.
+map:dataUnitTopConceptInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap	map:dataUnitScheme;
+	.	
+map:dataUnitTopConceptVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:dataUnitTopConcept;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+
+
+##########################################
+# Mapping individuals in C-6 
+# (unit of measures types)
+# We planned to use this in the mapping, 
+# but this is currently unused
+##########################################
+
+map:C6types a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-dataUnits/t@@C-6.typeOfUnitCode@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:C6typesNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property skos:notation;
+	d2rq:column "C-6.typeOfUnitCode";
+	.
+map:C6typesLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property skos:prefLabel;
+	d2rq:column "C-6.TypeOfUnit"@en;
+	.
+map:C6typesSkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:dataUnitTopConcept;
+	.		
+map:C6typesSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.		
+map:C6typesSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataUnitScheme;
+	.	
+map:C6typesInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:x-dataUnits;
+	.
+map:C6typesNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property metaMap:nameSpace;
+	d2rq:pattern "t@@C-6.typeOfUnitCode@@";
+	.
+
+map:C6typesVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6types;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.
+
+
+
+##########################################
+# Mapping individuals in C-6 
+##########################################
+
+map:C6 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-6/@@C-6.CodeFigure@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	.
+map:C6Notation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property skos:notation;
+	d2rq:column "C-6.CodeFigure";
+	.
+	
+map:C6SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property skos:prefLabel;
+	d2rq:column "C-6.UnitName"@en;
+	.
+	
+map:C6SkosBroader a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property skos:broader;
+	d2rq:refersToClassMap map:C6types;
+	.		
+
+map:C6TypeRegistryItem a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property rdf:type;
+	d2rq:constantValue iso19135:RegisterItem;
+	.
+map:C6TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.		
+
+map:C6TypeSKOSInScheme a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property skos:inScheme;
+	d2rq:refersToClassMap map:dataUnitScheme;
+	.	
+map:C6TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableC6;
+	.
+map:C6TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "C-6.CodeFigure";
+	.
+
+map:C6TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:status;
+	d2rq:column "C-6.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:C6TypeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C6;
+#	d2rq:property iso19135:status;
+#	d2rq:column "C-6.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+	
+map:C6TypeCodeFigure a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:codeFigure;
+	d2rq:column "C-6.CodeFigure";
+	.
+	
+map:C6TypeOfUnit a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:TypeOfUnit;
+	d2rq:column "C-6.TypeOfUnit";
+	.		
+		
+	
+map:C6typeOfUnitCode a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:typeOfUnitCode;
+	d2rq:column "C-6.typeOfUnitCode";
+	.	
+	
+		
+map:C6UnitName a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:UnitName;
+	d2rq:column "C-6.UnitName";
+	.	
+		
+map:C6ConventionalAbbreviation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:ConventionalAbbreviation;
+	d2rq:column "C-6.ConventionalAbbreviation";
+	.	
+		
+map:C6AbbreviationIA5 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:AbbreviationIA5;
+	d2rq:column "C-6.AbbreviationIA5";
+	.	
+		
+map:C6AbbreviationIA2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:AbbreviationIA2;
+	d2rq:column "C-6.AbbreviationIA2";
+	.
+		
+	
+map:C6DefinitionInBaseUnits a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property wmo:DefinitionInBaseUnits;
+	d2rq:column "C-6.DefinitionInBaseUnits";
+	.	
+
+map:C6Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C6;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+	
+	
+	

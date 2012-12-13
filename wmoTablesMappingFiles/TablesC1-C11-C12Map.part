@@ -1,0 +1,607 @@
+####################################################################################################
+# Tables C1, C11, C12 (Locations)
+####################################################################################################
+@prefix metaMap: 	<http://reference.metoffice.gov.uk/data/wmo/meta/mapping#> .
+@prefix metModel:	<http://reference.metoffice.gov.uk/data/wmo/meta/model#> .
+@prefix metExtra:	<http://reference.metoffice.gov.uk/data/wmo/def/met#> .
+@prefix iso19135: 	<http://reference.metoffice.gov.uk/data/wmo/def/iso19135#> .
+@prefix wmo: 		<http://reference.metoffice.gov.uk/data/wmo/def/wmo#> .
+@prefix map: 		<http://reference.metoffice.gov.uk/data/wmo/mappings/TablesC1-C11-C12#> .	# this mapping
+@prefix generic:	<http://reference.metoffice.gov.uk/data/wmo/mapping/generic1#> .
+@prefix wmoregion:  <http://reference.metoffice.gov.uk/data/wmo/tdcf/common/x-regions/> .
+@prefix :<http://reference.metoffice.gov.uk/data/wmo/tdcf/> .																							#This is the default!
+
+@prefix rdf:    	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    	<http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: 		<http://www.w3.org/2004/02/skos/core#> .
+
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+
+#####################################################################################################
+# MAIN CONTAINERS
+# (from baseDirs)
+# 
+#
+#####################################################################################################
+
+##########################################
+# TableC-1 
+##########################################	
+map:tableC1 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-1";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC1Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-1"@en;
+	.
+map:tableC1Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Originating center"@en;				# TODO to verify
+	.	
+map:tableC1NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-1";
+	.	
+map:tableC1In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.
+map:tableC1Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC1Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC1;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:tableC1Pragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC1;
+	d2rq:property metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppressC1;
+	.
+
+
+
+##########################################
+# TableC-11
+##########################################	
+map:tableC11 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-11";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC11Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-11"@en;
+	.
+map:tableC11Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Originating centers"@en;				# TODO to verify
+	.	
+map:tableC11NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-11";
+	.	
+map:tableC11In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.
+map:tableC11Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC11Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC11;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+map:tableC11Pragma a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC11;
+	d2rq:property metaMap:pragma;
+	d2rq:constantValue generic:canonicalExpandDashSuppressC11;
+	.
+
+
+##########################################
+# TableC-12
+##########################################	
+map:tableC12 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-12";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableC12Label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Table C-12"@en;
+	.
+map:tableC12Comment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Originating sub-centers"@en;				# TODO to verify
+	.	
+map:tableC12NS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "c-12";
+	.	
+map:tableC12In a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.
+map:tableC12Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableC12;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+#map:tableC12Type a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:tableC12;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:Registry;
+#	.	
+
+##########################################
+# We need an extra code table for regions
+##########################################	
+map:tableX-regions a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/x-regions";							# TODO a constant value should be used instead
+	d2rq:class metaMap:TerminologySet;						# TODO going to be obsoleted
+	.
+map:tableX-regionsLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Regions"@en;
+	.
+map:tableX-regionsComment a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property rdfs:comment;
+	d2rq:constantValue "Regions derived, but not defined in, common tables C1-C11"@en;				# TODO to verify
+	.		
+	
+map:tableX-regionsNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property metaMap:nameSpace;
+	d2rq:constantValue "x-regions";
+	.	
+map:tableX-regionsIn a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property metaMap:containedIn;
+	d2rq:constantValue <http://reference.metoffice.gov.uk/data/wmo/tdcf/common>;
+	.
+map:tableX-regionsVersion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+map:tableX-regionsTypeSKOS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:tableX-regions;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Collection;
+	.
+
+
+
+
+
+
+
+##########################################
+# Mapping elements in Table C1
+##########################################											
+map:C1 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-1/@@C-1.CodeFigureForF3F3F3@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	d2rq:condition "C-1.CodeFigureForF3F3F3!=\"\"";
+	.
+map:C1SkosNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property skos:notation;
+	d2rq:column "C-1.CodeFigureForF3F3F3";
+	.
+
+map:C1SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property skos:prefLabel;
+	d2rq:column "C-1.OriginatingGeneratingCentres_en";
+	d2rq:condition "C-1.Reserved_by=\"\"";
+	d2rq:lang "en";
+	.
+map:C1SkosLabel2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Reserved"@en;
+	d2rq:condition "C-1.Reserved_by!=\"\"";
+	.	
+map:C1Comment1 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property rdfs:comment;
+	d2rq:pattern "Reserved by @@C-1.Reserved_by@@";
+	d2rq:condition "C-1.Reserved_by!=\"\"";
+	d2rq:lang "en";
+	.	
+
+#map:C1TypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C1;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:C1TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "C-1.Reserved_by=\"\"";
+	.		
+
+#map:C1TypeSKOSInScheme a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C1;
+#	d2rq:property skos:inScheme;
+#	d2rq:refersToClassMap map:dataUnitScheme;
+#	.	
+map:C1TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableC1;
+	.
+map:C1TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "C-1.CodeFigureForF3F3F3";
+	.
+
+map:C1TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "C-1.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:C1TypeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C1;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "C-1.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+
+map:C1Reserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "C-1.OriginatingGeneratingCentres_en like \"Reserved%\" or Reserved_by!=\"\"";
+	.
+map:C1Match a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property skos:exactMatch;
+	d2rq:refersToClassMap map:C11;
+	d2rq:condition "C-1.Octet5GRIB1_Octet6BUFR3 = C-11.GRIB2_BUFR4 and C-1.Octet5GRIB1_Octet6BUFR3 not like \"%-%\"";
+	d2rq:condition "C-1.Reserved_by=\"\"";
+	.	
+map:C1Match2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property rdfs:seeAlso;
+	d2rq:refersToClassMap map:C11;
+	d2rq:condition "C-1.Octet5GRIB1_Octet6BUFR3 = C-11.GRIB2_BUFR4 and C-1.Octet5GRIB1_Octet6BUFR3 not like \"%-%\"";
+	d2rq:condition "C-1.Reserved_by!=\"\"";
+	.		
+
+map:C1InRegion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:inRegion;
+	d2rq:uriColumn "C-1.Region";
+	d2rq:translateWith map:regions;
+	.	
+
+map:C1Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+# Here are local fields
+
+map:C1CodeFigureForF1F2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:CodeFigureForF1F2;
+	d2rq:column "C-1.CodeFigureForF1F2";
+	.
+
+map:C1CodeFigureForF3F3F3 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:CodeFigureForF3F3F3;
+	d2rq:column "C-1.CodeFigureForF3F3F3";
+	.
+
+map:C1Octet5GRIB1_Octet6BUFR a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:Octet5GRIB1_Octet6BUFR3;
+	d2rq:column "C-1.Octet5GRIB1_Octet6BUFR3";
+	.
+	
+map:C1OriginatingGeneratingCentres_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C1;
+	d2rq:property wmo:OriginatingGeneratingCentres_en;
+	d2rq:column "C-1.OriginatingGeneratingCentres_en";
+	.			
+
+
+##########################################
+# Mapping elements in Table C11
+##########################################											
+map:C11 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-11/@@C-11.CREX2@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	d2rq:condition "C-11.CREX2!=\"\"";
+	.
+map:C11SkosNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property skos:notation;
+	d2rq:column "C-11.CREX2";
+	.
+
+map:C11SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property skos:prefLabel;
+	d2rq:column "C-11.OriginatingGeneratingCentre_en";
+	d2rq:condition "C-11.Reserved_by=\"\"";
+	d2rq:lang "en";
+	.
+map:C11SkosLabel2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property rdfs:label;
+	d2rq:constantValue "Reserved"@en;
+	d2rq:condition "C-11.Reserved_by!=\"\"";
+	.		
+map:C11Comment1 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property rdfs:comment;
+	d2rq:pattern "Reserved by @@C-11.Reserved_by@@";
+	d2rq:condition "C-11.Reserved_by!=\"\"";
+	d2rq:lang "en";
+	.	
+
+#map:C11TypeRegistryItem a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C11;
+#	d2rq:property rdf:type;
+#	d2rq:constantValue iso19135:RegisterItem;
+#	.
+map:C11TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	d2rq:condition "C-11.Reserved_by=\"\"";
+	.		
+
+#map:C11TypeSKOSInScheme a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C11;
+#	d2rq:property skos:inScheme;
+#	d2rq:refersToClassMap map:dataUnitScheme;
+#	.	
+map:C11TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableC11;
+	.
+map:C11TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property metaMap:nameSpace;
+	d2rq:column "C-11.CREX2";
+	.
+
+map:C11TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "C-11.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:C11TypeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C11;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "C-11.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+
+map:C11Reserved a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property wmo:status;
+	d2rq:constantValue wmo:Reserved;
+	d2rq:condition "C-11.OriginatingGeneratingCentre_en like \"Reserved%\" or Reserved_by!=\"\"";
+	.
+map:C11Match a d2rq:PropertyBridge;		# This should be inferred	
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property skos:exactMatch;
+	d2rq:refersToClassMap map:C1;
+	d2rq:condition "C-1.Octet5GRIB1_Octet6BUFR3 = C-11.GRIB2_BUFR4 and C-11.GRIB2_BUFR4 not like \"%-%\"";
+	d2rq:condition "C-11.Reserved_by=\"\"";
+	.	
+map:C11Match2 a d2rq:PropertyBridge;		# This should be inferred	
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property rdfs:seeAlso;
+	d2rq:refersToClassMap map:C1;
+	d2rq:condition "C-1.Octet5GRIB1_Octet6BUFR3 = C-11.GRIB2_BUFR4 and C-11.GRIB2_BUFR4 not like \"%-%\"";
+	d2rq:condition "C-11.Reserved_by!=\"\"";
+	.		
+	
+
+map:C11InRegion a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property wmo:inRegion;
+	d2rq:uriColumn "C-11.Region";
+	d2rq:translateWith map:regions;
+	.	
+
+map:C11Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+	
+# Here are local fields
+
+map:C11CREX2 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property wmo:CREX2;
+	d2rq:column "C-11.CREX2";
+	.
+
+map:C11RIB2_BUFR4 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property wmo:GRIB2_BUFR4;
+	d2rq:column "C-11.GRIB2_BUFR4";
+	.
+map:C11OriginatingGeneratingCentre_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C11;
+	d2rq:property wmo:OriginatingGeneratingCentre_en;
+	d2rq:column "C-11.OriginatingGeneratingCentre_en";
+	.
+
+
+
+##########################################
+# Mapping elements in Table C12
+##########################################											
+map:C12 a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "common/c-12/@@C-12.CodeFigure_OriginatingCentres@@.@@C-12.CodeFigure_SubCentres@@";
+	d2rq:class metaMap:TerminologyIndividual;
+	d2rq:condition "C-12.CodeFigure_SubCentres!=\"\"";
+	.
+
+map:C12SkosNotation a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property skos:notation;
+	d2rq:pattern "@@C-12.CodeFigure_OriginatingCentres@@.@@C-12.CodeFigure_SubCentres@@";
+	.
+
+map:C12SkosLabel a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property skos:prefLabel;
+	d2rq:column "C-12.Name_SubCentres_en";
+	d2rq:lang "en";
+	.
+
+	
+map:C12Comment1 a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property rdfs:comment;
+	d2rq:pattern "@@C-12.Name_SubCentres_en@@ (subcenter of @@C-12.Name_OriginatingCentres_en@@)";
+	d2rq:lang "en";
+	.	
+
+map:C12TypeRegistryItem a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property rdf:type;
+	d2rq:constantValue iso19135:RegisterItem;
+	.
+map:C12TypeSKOSConcept a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property rdf:type;
+	d2rq:constantValue skos:Concept;
+	.		
+
+#map:C12TypeSKOSInScheme a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C12;
+#	d2rq:property skos:inScheme;
+#	d2rq:refersToClassMap map:dataUnitScheme;
+#	.	
+map:C12TypeInRegistry a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property metaMap:containedIn;
+	d2rq:refersToClassMap map:tableC12;
+	.
+map:C12TypeNS a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property metaMap:nameSpace;
+	d2rq:pattern "@@C-12.CodeFigure_OriginatingCentres@@.@@C-12.CodeFigure_SubCentres@@";
+	.
+
+map:C12TypeStatus a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:status;
+	d2rq:uriColumn "C-12.Status";
+	d2rq:translateWith map:StatusTableWMO;
+	.
+#map:C12TypeStatus2 a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:C12;
+#	d2rq:property iso19135:status;
+#	d2rq:uriColumn "C-12.Status";
+#	d2rq:translateWith map:StatusTableISO;
+#	.
+
+
+map:C12subcenter1 a d2rq:PropertyBridge;		# This should be inferred	
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:subCenterOf;
+	d2rq:refersToClassMap map:C11;
+	d2rq:condition "C-12.CodeFigure_OriginatingCentres = C-11.GRIB2_BUFR4";
+	.	
+	
+map:C12subcenter2 a d2rq:PropertyBridge;		# This should be inferred	
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:subCenterOf;
+	d2rq:refersToClassMap map:C1;
+	d2rq:condition "C-12.CodeFigure_OriginatingCentres = C-1.Octet5GRIB1_Octet6BUFR3";
+	.	
+map:C12Version a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property metExtra:hasVersion;
+	d2rq:constantValue "i0";
+	.	
+
+# Here are local fields
+
+map:C12CodeFigure_OriginatingCentres a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:CodeFigure_OriginatingCentres;
+	d2rq:column "C-12.CodeFigure_OriginatingCentres";
+	.
+
+map:C12Name_OriginatingCentres_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:Name_OriginatingCentres_en;
+	d2rq:column "C-12.Name_OriginatingCentres_en";
+	.
+map:C12CodeFigure_SubCentres a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:CodeFigure_SubCentres;
+	d2rq:column "C-12.CodeFigure_SubCentres";
+	.
+map:C12Name_SubCentres_en a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:C12;
+	d2rq:property wmo:Name_SubCentres_en;
+	d2rq:column "C-12.Name_SubCentres_en";
+	.
+
+
+
+map:StatusTableWMO a d2rq:TranslationTable;
+        d2rq:translation [ d2rq:databaseValue "Validation"; d2rq:rdfValue wmo:Validation; ];
+        d2rq:translation [ d2rq:databaseValue "Operational"; d2rq:rdfValue wmo:Operational; ];
+        .
+
+map:regions a d2rq:TranslationTable;
+        d2rq:translation [ d2rq:databaseValue "WMOs"; d2rq:rdfValue wmoregion:Region0; ];
+        d2rq:translation [ d2rq:databaseValue "Region I"; d2rq:rdfValue wmoregion:Region1; ];
+        d2rq:translation [ d2rq:databaseValue "Region II"; d2rq:rdfValue wmoregion:Region2; ];
+        d2rq:translation [ d2rq:databaseValue "Region III"; d2rq:rdfValue wmoregion:Region3; ];
+        d2rq:translation [ d2rq:databaseValue "Region IV"; d2rq:rdfValue wmoregion:Region4; ];
+        d2rq:translation [ d2rq:databaseValue "Region V"; d2rq:rdfValue wmoregion:Region5; ];
+        d2rq:translation [ d2rq:databaseValue "Region VI"; d2rq:rdfValue wmoregion:Region6; ];
+        .
+
